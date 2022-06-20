@@ -1,25 +1,21 @@
 import React from "react";
-import Components from "./Components";
 import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { infoProvider } from "./context";
 import "./index.css";
+import Home from "./Components/home/home";
+import "../build.css";
 
 const App = () => {
-  const [Nav, Hero, Footer, Page, Graph, Prediction] = Components;
   useEffect(() => {
     document.title = "CovacxData";
   }, []);
   return (
-    <div className="bg-bg">
-      <header>
-        <Nav />
-      </header>
-      <main>
-        <Hero />
-        <Prediction />
-      </main>
-      <Graph />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 export default App;

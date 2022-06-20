@@ -1,20 +1,25 @@
 import React from "react";
 import Card from "../Card";
-import useFetch from "../../Api";
 import Loading from "../Loading";
-import dataStream from "../maker";
-import dataContextProvider from "../../context";
+import dataStream from "./maker";
+import { infoContext } from "../../context";
+
+const days = [
+  "Sunday",
+  "Monnday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 const Prediction = () => {
-  const { data, loading, error } = useFetch(
-    "https://arimamodel.herokuapp.com/vaccination_prediction"
-  );
-  const { datalast, loadinglast, errorlast } = useFetch(
-    "https://arimamodel.herokuapp.com/default_mod"
-  );
-  if (data !== undefined && data !== null) {
-    let infodata = data.data;
-    infodata = dataStream(infodata);
+  let infodata;
+  const { cat, data } = React.useContext(infoContext);
+  if (data.data !== undefined && data.data !== null) {
+    let info = data.data;
+    infodata = dataStream(info);
     return (
       <section className="px-24 py-28">
         <h3 className="text-5xl text-blue">Counts for next 6 days</h3>
@@ -37,8 +42,6 @@ const Prediction = () => {
         </div>
       </section>
     );
-  } else if (error) return <p>Error!</p>;
-  else return <Loading />;
+  } else return <Loading />;
 };
-
 export default Prediction;

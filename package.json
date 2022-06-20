@@ -9,7 +9,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "export": "gh-pages -d build",
-    "style":"npx tailwindcss -o build.css --minify"
+    "style": "npx tailwindcss -o build.css --minify"
   },
   "keywords": [
     "react"

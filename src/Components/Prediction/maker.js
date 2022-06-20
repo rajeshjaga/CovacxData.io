@@ -1,12 +1,12 @@
 const dataStream = (props) => {
   let buffer = [];
-  if (props !== undefined || props !== null) {
-    props.forEach((item, index) => {
+  if (props !== undefined && props !== null) {
+    let { data } = props;
+    data.forEach((item, index) => {
       let temp;
       if (index === 0) {
-        buffer.push(item);
       } else {
-        temp = item.item - props[index - 1].item;
+        temp = item.item - data[index - 1].item;
         buffer.push({ item: temp, day: item.day });
       }
     });
