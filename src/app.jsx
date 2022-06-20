@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { infoProvider } from "./context";
 import "./index.css";
 import Home from "./Components/home/home";
-import "../build.css";
+import "./build.css";
 
 const App = () => {
   useEffect(() => {
